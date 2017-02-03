@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Pokedex</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Users.css">
+    <script>
+        $(document).ready(function() {
+            var i = 1;
+            for (; i <= 151; i++) {
+                $('#PokemonPics').append(
+                    `<img class='pokemon_entry' id='${i}' src="http://pokeapi.co/media/img/${i}.png" alt="">`
+
+                )
+            }
+
+            // console.log(pokemonData[0][0]);
+            // for (let i = 1; i < 10; i++) {
+            //     var pokeName = pokemonData.i.name;
+            //     console.log(pokeName);
+            //     $('#PokemonInfo').append(
+            //         `<p>
+            // ${pokeName}
+            // </p>`
+            // );
+            // }
+
+            $('.pokemon_entry').click(function() {
+                var id = $(this).attr('id');
+                $.get(`http://pokeapi.co/api/v1/pokemon/${id}/`, function(res) {
+                    console.log(res);
+                }, 'json');
+
+                // console.log(pokemonData);
+                // console.log(pokemonData.length);
+            })
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id='PokemonPics'>
+    </div>
+
+    <div id='PokemonInfo'>
+
+    </div>
+</body>
+
+</html>
+sole.log(pokemonData.length); })
+</script>
+
+</head>
+
+<body>
+    <div id='PokemonPics'>
+    </div>
+
+    <div id='PokemonInfo'>
+
+    </div>
+</body>
+
+</html>
+v>
+
+<div id='PokemonInfo'>
+
+</div>
+</body>
+
+</html>

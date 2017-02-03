@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="pokedex.css">
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+    <script type="text/javascript">
+
+        // function getPoke(){
+        //     $.get(("http://pokeapi.co/api/v1/pokemon/"+$(this).attr('id')), function(res){
+        //         console.log(res);
+        //     }, 'json');
+        // }
+
+        function pokeData(res){
+            var name = res.name;
+            var type = "";
+            var height = res.height;
+            var weight = res.weight;
+
+            for(var i = 0; i < res.types.length; i++) {
+
+                type+="<li>"+res.types[i].name+"</li>";
+
+            }
+
+            $('#poke_info').html(
+                `<h2>${name}</h2>
+                <h3>Types</h3>
+                <ul>${type}</ul>
+                <h3>Height</h3>
+                <p>${height}</p>
+                <h3>Weight</h3>
+                <p>${weight}</p>`
+            )
+
+        }
+
+        $(document).ready(function() {
+            console.log('ready for some pokemon!');
+
+            for (var i = 1; i <= 151; i++) {
+                $('#pokemon151').append(
+                    // pokemon = $('img').attr('src','http://pokeapi.co/media/img/'+i+'.png');
+                    `<img id='${i}' src='http://pokeapi.co/media/img/${i}.png' alt="pokemon img">`
+                );
+            };
+
+            $('img').on('click',function(){
+                console.log('You have clicked pokemon #'+$(this).attr('id'));
+                $.get(("http://pokeapi.co/api/v1/pokemon/"+$(this).attr('id')), function(res){
+                        console.log(res);
+                        pokeData(res);
+                    }, 'json');
+
+            });
+
+        })
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="pokemon151">
+
+        </div>
+        <div id="pokedex">
+            <h1>POKEDEX</h1>
+            <div id="poke_info">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
